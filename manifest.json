@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Fastmail favicon count",
+  "name": "Newsblur favicon count",
   "version": "1.0",
 
-  "description": "Add a count of your unread messages to the favicon on fastmail.",
+  "description": "Add the number of unread stores to the Newsblur favicon.",
 
   "icons": {
     "48": "icons/icon-48.png"
@@ -11,7 +11,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.fastmail.com/mail*"],
+      "matches": ["*://*.newsblur.com/*"],
       "js": ["index.js"]
     }
   ]

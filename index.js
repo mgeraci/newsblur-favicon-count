@@ -1,4 +1,4 @@
-const ICON = "https://dropbox.michaelgeraci.com/public/fastmail/fastmail-icon.png";
+const ICON = "https://dropbox.michaelgeraci.com/public/newsblur/favicon-16.png";
 const NUMBERS = {
 	0: [
 		[0,1,1,1,0],
@@ -119,7 +119,7 @@ const NUMBERS = {
 	]
 };
 
-(function FastmailFaviconCount() {
+(function NewsblurFaviconCount() {
 	var self = this;
 
 	this.construct = () => {
@@ -131,7 +131,7 @@ const NUMBERS = {
 	};
 
 	this.poll = () => {
-		if (self.getUnreadCount() >= 0) {
+		if (self.getUnreadCount()) {
 			self.getUnreadCountIcon(function(icon) {
 				self.setIcon(icon);
 			});
@@ -143,22 +143,8 @@ const NUMBERS = {
 	};
 
 	this.getUnreadCount = () => {
-		const folders = document.querySelectorAll(".v-FolderSource");
-		let res = 0;
-		const mailboxesToIgnore = ["Drafts", "Trash"];
-
-		folders.forEach((folder, i) => {
-			const name = folder.querySelector(".v-FolderSource-name").innerHTML;
-			const count = parseInt(
-				folder.querySelector(".v-FolderSource-badge").innerHTML, 10
-			) || 0;
-
-			if (mailboxesToIgnore.indexOf(name) < 0) {
-				res += count;
-			}
-		});
-
-		return res;
+		matches = document.title.match(/\((.*)\)/);
+    return matches ? matches[1] : false;
 	}
 
 	this.drawUnreadCount = (unread, callback) => {
@@ -277,7 +263,7 @@ const NUMBERS = {
 			var img = new Image();
 
 			// allow cross-origin access for the image (since it's being hosted on
-			// michaelgeraci.com, but displaying on fastmail.com
+			// michaelgeraci.com, but displaying on newsblur.com
 			img.crossOrigin = "anonymous";
 
 			img.addEventListener("load", () => {
@@ -295,7 +281,7 @@ const NUMBERS = {
 		const unread = self.getUnreadCount();
 
 		self.drawUnreadCount(unread, (icon) => {
-			callback(icon.toDataURL('image/png'));
+			callback(icon.toDataURL("image/png"));
 		});
 	}
 
@@ -331,7 +317,7 @@ const NUMBERS = {
 	}
 
 	this.toString = () => {
-		return '[object FastmailFaviconCount]';
+		return '[object NewsblurFaviconCount]';
 	}
 
 	return this.construct();
