@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Newsblur favicon count",
-  "version": "1.0",
+  "version": "1.0.1",
 
   "description": "Add the number of unread stores to the Newsblur favicon.",
 
