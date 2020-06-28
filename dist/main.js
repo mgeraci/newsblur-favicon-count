@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("/* global document */\n\n(function NewsblurFaviconCount() {\n  this.construct = () => {\n    this.timer = setInterval(this.poll, 500);\n    this.poll();\n\n    return true;\n  };\n\n  this.poll = () => {\n    const count = this.getUnreadCount();\n\n    console.log(count); // eslint-disable-line no-console\n  };\n\n  this.getUnreadCount = () => {\n    const titleCount = document.title.match(/\\((.*)\\)/);\n    return titleCount ? titleCount[1] : false;\n  };\n\n  this.toString = () => '[object NewsblurFaviconCount]';\n\n  return this.construct();\n}());\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("/* global document */\n\nclass NewsblurFaviconCount {\n  constructor() {\n    this.timer = setInterval(this.poll.bind(this), 500);\n    this.poll();\n  }\n\n  poll() {\n    const count = this.getUnreadCount();\n    console.log(count); // eslint-disable-line no-console\n  }\n\n  // eslint-disable-next-line class-methods-use-this\n  getUnreadCount() {\n    const titleCount = document.title.match(/\\((.*)\\)/);\n    return titleCount ? titleCount[1] : false;\n  }\n}\n\n(function newsblurExtension() {\n  return new NewsblurFaviconCount();\n}());\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
