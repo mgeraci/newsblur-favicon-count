@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.newsblur.com/*"],
-      "js": ["index.js"]
+      "js": ["dist/main.js"]
     }
   ],
   "permissions": [
