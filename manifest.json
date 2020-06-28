@@ -2,18 +2,20 @@
   "manifest_version": 2,
   "name": "Newsblur favicon count",
   "version": "1.0.1",
-
   "description": "Add the number of unread stores to the Newsblur favicon.",
-
   "icons": {
-    "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png"
+    "48": "icons/48x48.png",
+    "96": "icons/96x96.png",
+    "128": "icons/128x128.png",
+    "256": "icons/256x256.png"
   },
-
   "content_scripts": [
     {
       "matches": ["*://*.newsblur.com/*"],
       "js": ["index.js"]
     }
+  ],
+  "permissions": [
+    "https://newsblur.com"
   ]
 }
