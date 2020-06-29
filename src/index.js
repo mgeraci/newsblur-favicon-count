@@ -1,17 +1,20 @@
 /* global document */
 
+import FaviconCount from '../favicon_count_base/dist/FaviconCountBase';
+// import FaviconCount from '../../favicon-count-base/src';
+
 class NewsblurFaviconCount {
   constructor() {
     this.timer = setInterval(this.poll.bind(this), 500);
+    this.faviconCount = new FaviconCount();
     this.poll();
   }
 
   poll() {
     const count = this.getUnreadCount();
-    console.log(count); // eslint-disable-line no-console
+    this.faviconCount.render(count);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getUnreadCount() {
     const titleCount = document.title.match(/\((.*)\)/);
     return titleCount ? titleCount[1] : false;
