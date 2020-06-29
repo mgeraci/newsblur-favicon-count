@@ -1,7 +1,6 @@
 /* global document */
 
 import FaviconCount from '../favicon_count_base/dist/FaviconCountBase';
-// import FaviconCount from '../../favicon-count-base/src';
 
 class NewsblurFaviconCount {
   constructor() {
